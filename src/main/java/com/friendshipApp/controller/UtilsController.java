@@ -13,6 +13,7 @@ import com.friendshipApp.service.FriendGraphMappingDetailsService;
 import com.friendshipApp.service.PersonProfileServices;
 
 @RestController
+@RequestMapping(path = "/friendshipApp")
 public class UtilsController 
 {
 	@Autowired	

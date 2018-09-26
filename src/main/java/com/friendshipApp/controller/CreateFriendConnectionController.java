@@ -66,7 +66,7 @@ public class CreateFriendConnectionController
 		}
 		}catch(Exception exp)
 		{
-			log.info(exp.getMessage());
+			log.info("Error in Creating Person {}  " +"-"+personProfile.getPersonEmailId()+":"+exp.getMessage());
 			successResponseDO.setSuccess(Boolean.FALSE);
 		}
 		return new ResponseEntity<SuccessResponseDO>(successResponseDO,HttpStatus.OK);
@@ -133,7 +133,7 @@ public class CreateFriendConnectionController
 			}
 		}catch(Exception exp)
 		{
-			log.info(exp.getMessage());
+			log.info("Error in making friend ship connection in {} {} "+":"+ makeFriendsDO.getFriends().get(0) + "and "+makeFriendsDO.getFriends().get(1)+exp.getMessage());
 			
 			successResponseDO.setSuccess(Boolean.FALSE);
 			
@@ -167,7 +167,7 @@ public class CreateFriendConnectionController
 			
 		}catch(Exception exp)
 		{
-			log.info(exp.getMessage());
+			log.info("Error in checking friend ship connection with {} {} "+":"+ makeFriendsDO.getFriends().get(0) + "and "+makeFriendsDO.getFriends().get(1)+exp.getMessage());
 			
 			successResponseDO.setSuccess(Boolean.FALSE);
 			

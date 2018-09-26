@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.friendshipApp.RequestResponseDO.FriendsListDO;
 import com.friendshipApp.RequestResponseDO.MakeFriendsDO;
+import com.friendshipApp.RequestResponseDO.RetriveFriendDO;
 import com.friendshipApp.model.FriendGraphMappingDetails;
 import com.friendshipApp.service.FriendGraphMappingDetailsService;
 import com.friendshipApp.service.PersonProfileServices;
 
 @RestController
+@RequestMapping(path = "/friendshipApp")
 public class RetriveFriendController 
 {
 	private static Logger log = LogManager.getLogger();
@@ -35,7 +37,7 @@ public class RetriveFriendController
 	FriendGraphMappingDetails newConnection;
 	
 	@RequestMapping(value = "/retriveFriend" , method = RequestMethod.POST)
-	public ResponseEntity<FriendsListDO> retriveFrineds(String personEmailId)
+	public ResponseEntity<FriendsListDO> retriveFrineds(@RequestBody RetriveFriendDO retriveFriendDO)
 	{
 		FriendsListDO friendsListDO = new FriendsListDO();
 		
@@ -43,7 +45,7 @@ public class RetriveFriendController
 		
 		try
 		{
-		long friendOneId = personProfileService.fetchProfileOnEmaiId(personEmailId);
+		long friendOneId = personProfileService.fetchProfileOnEmaiId(retriveFriendDO.getEmail());
 		
 		FriendGraphMappingDetails listOfcurrent = friendGraphMappingDetailsService.getGraphs();
 		
@@ -67,7 +69,7 @@ public class RetriveFriendController
 		}
 		}catch(Exception exp)
 		{
-			log.info(exp.getMessage());
+			log.info("Error in retriving friend ship connection of {} "+":"+ retriveFriendDO.getEmail() +"::"+exp.getMessage());
 			
 			friendsListDO.setSuccess(Boolean.FALSE);
 		}
@@ -120,7 +122,7 @@ public class RetriveFriendController
 		{
 			friendsListDO.setSuccess(Boolean.FALSE);
 			
-			log.info(exp.getMessage());
+			log.info("Error in retriving common friend ship connection with {} {} "+":"+ makeFriendsDO.getFriends().get(0) + "and "+makeFriendsDO.getFriends().get(1)+exp.getMessage());
 		}
 		return new ResponseEntity<FriendsListDO>( friendsListDO ,HttpStatus.OK);
 	}

@@ -2,6 +2,8 @@ package com.friendshipApp.controller;
 
 import java.util.LinkedList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,11 @@ import com.friendshipApp.utils.ApplicationConstants;
 import com.friendshipApp.utils.FriendGraph;
 
 @RestController
+@RequestMapping(path = "/friendshipApp")
 public class SubscribeToFriendController 
 {
+	private static Logger log = LogManager.getLogger();
+	
 	@Autowired 
 	PersonProfileServices personProfileServices;
 	
@@ -38,6 +43,8 @@ public class SubscribeToFriendController
 		successResponseDO.setSuccess(Boolean.FALSE);
 		
 		LinkedList<Integer>[] adjlocal = new LinkedList[10];
+		
+		try {
 		
 		long friendOneId = personProfileServices.fetchProfileOnEmaiId(subscribeRequestDO.getRequestor());
 			
@@ -89,7 +96,12 @@ public class SubscribeToFriendController
 			
 			successResponseDO.setMessage(ApplicationConstants.FRIEND_SUBSCRITPION_FAILURE_NO_FRIENDS);
 		}
-		
+		}catch(Exception exp ){
+			
+			successResponseDO.setSuccess(Boolean.FALSE);
+			
+			log.info("Error in retriving common friend ship connection with {} {} "+":"+ subscribeRequestDO.getRequestor() + "and "+ subscribeRequestDO.getTarget()+exp.getMessage());
+		}
 		return new ResponseEntity<SuccessResponseDO>( successResponseDO ,HttpStatus.OK);
 	 }
 	
