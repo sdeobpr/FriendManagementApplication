@@ -13,6 +13,8 @@ Technology Used
 
 ###Database schema diagram and database DDL scripts are on below path 
 
+\src\main\resources\database
+
 ####List Of Rest End Points:
 1.	Create person : 
 a.	Path : /friendshipApp/ createPerson
@@ -95,7 +97,7 @@ c.	Output : { “Success”: “true”}
 
 ###Junit Test case are in below location :
 	
-
+\src\test\java\com
 
 
 
