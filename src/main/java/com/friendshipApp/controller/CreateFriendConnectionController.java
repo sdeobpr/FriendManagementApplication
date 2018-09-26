@@ -27,6 +27,7 @@ import com.friendshipApp.utils.FriendGraph;
 
 @RestController
 @EnableAutoConfiguration
+@RequestMapping(path = "/friendshipApp")
 public class CreateFriendConnectionController 
 {
 	private static Logger log = LogManager.getLogger();
