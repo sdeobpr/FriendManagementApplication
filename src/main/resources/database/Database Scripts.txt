@@ -1,0 +1,33 @@
+CREATE TABLE FS_PERSON_PROFILE
+( 
+  Person_Profile_Id number(10) NOT NULL,
+  Person_Name varchar2(100) 
+  Person_EmailId varchar2(100)
+  Contact_No varchar2(100),
+  
+);
+
+
+CREATE TABLE FS_PROFILE_MAPPING_DTL
+( 
+  Mapping_Id number(10) NOT NULL,
+  FriendShip_Mapping_Graph varchar2(4000) 
+  Subscribe_Mapping_Graph varchar2(4000)
+  Blocking_Mapping_Graph varchar2(4000)
+  
+);
+
+CREATE SEQUENCE seq_person
+  MINVALUE 1
+  MAXVALUE 9999
+  START WITH 1
+  INCREMENT BY 1;
+
+CREATE SEQUENCE seq_friend_mapping
+  MINVALUE 1
+  MAXVALUE 9999
+  START WITH 1
+  INCREMENT BY 1;
+
+drop sequence seq_person;
+drop sequence seq_friend_mapping;
