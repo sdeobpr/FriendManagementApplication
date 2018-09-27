@@ -19,4 +19,6 @@ public interface FriendGraphMappingDetailsService
 	public void resetTable();
 	
 	public List<Integer> fetchFriendListOnEmailId(FriendGraphMappingDetails listOfcurrent, Integer friendId1);
+	
+	public List<Integer> fetchSubscriberOnEmailId(FriendGraphMappingDetails listOfcurrent, Integer friendId1);
 }

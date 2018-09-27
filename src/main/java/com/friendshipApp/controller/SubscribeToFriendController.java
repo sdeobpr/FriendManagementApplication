@@ -1,6 +1,8 @@
 package com.friendshipApp.controller;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.friendshipApp.RequestResponseDO.FriendsListDO;
 import com.friendshipApp.RequestResponseDO.SubscribeRequestDO;
+import com.friendshipApp.RequestResponseDO.SubscriberDO;
+import com.friendshipApp.RequestResponseDO.SubscriptionListDO;
 import com.friendshipApp.RequestResponseDO.SuccessResponseDO;
 import com.friendshipApp.model.FriendGraphMappingDetails;
 import com.friendshipApp.service.FriendGraphMappingDetailsService;
@@ -37,7 +42,7 @@ public class SubscribeToFriendController
 	
 	@RequestMapping(value = "subscribeToFriendUpdates" ,method = RequestMethod.POST )
 	public ResponseEntity<SuccessResponseDO> subscribeToFriendupdates(@RequestBody SubscribeRequestDO subscribeRequestDO)
-	 {
+	{
 		SuccessResponseDO successResponseDO = new SuccessResponseDO();
 		
 		successResponseDO.setSuccess(Boolean.FALSE);
@@ -103,6 +108,51 @@ public class SubscribeToFriendController
 			log.info("Error in retriving common friend ship connection with {} {} "+":"+ subscribeRequestDO.getRequestor() + "and "+ subscribeRequestDO.getTarget()+exp.getMessage());
 		}
 		return new ResponseEntity<SuccessResponseDO>( successResponseDO ,HttpStatus.OK);
-	 }
+	}
+	
+	@RequestMapping(value = "/updateSubscriber" ,method = RequestMethod.POST )
+	
+	public ResponseEntity<SubscriptionListDO> subscriberforUpdated(@RequestBody SubscriberDO subscriberDO)
+	{
+		List<String> listOfSubscriberEmails = new ArrayList<String>();
+		
+		SubscriptionListDO subscriptionListDO = new SubscriptionListDO();
+		try{
+			
+			long friendOneId = personProfileServices.fetchProfileOnEmaiId(subscriberDO.getSender());
+			
+			FriendGraphMappingDetails listOfcurrent = friendGraphMappingDetailsService.getGraphs();
+			
+			List<Integer> listOfSubscriber  = friendGraphMappingDetailsService.fetchSubscriberOnEmailId(listOfcurrent, new Long(friendOneId).intValue());
+			
+			listOfSubscriber.removeIf(s -> s == friendOneId);
+			
+			for(Integer localIds: listOfSubscriber)
+			{			
+				listOfSubscriberEmails.add(personProfileServices.fetchProfileOnId(localIds).getPersonEmailId());
+			}
+			if(listOfSubscriberEmails.size()>0)
+			{
+				subscriptionListDO.setSuccess(Boolean.TRUE);
+				subscriptionListDO.setRecipients(listOfSubscriberEmails);
+				subscriptionListDO.setCount(listOfSubscriberEmails.size());
+				
+			}else{
+				subscriptionListDO.setSuccess(Boolean.FALSE);			
+			}
+			
+			
+			
+		}catch(Exception exp)
+		{
+			log.info("Error in retriving scriber info of friend ship connection of {} "+":"+ subscriberDO.getSender() +"::"+exp.getMessage());
+			
+			subscriptionListDO.setSuccess(Boolean.FALSE);
+		}
+				
+		return new ResponseEntity<SubscriptionListDO>( subscriptionListDO ,HttpStatus.OK);
+	}
+	
+	
 	
 }

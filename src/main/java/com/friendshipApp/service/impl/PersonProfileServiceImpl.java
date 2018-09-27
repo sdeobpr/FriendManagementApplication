@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.friendshipApp.dao.PersonProfileDAO;
+import com.friendshipApp.exception.TechnicalException;
 import com.friendshipApp.model.FriendGraphMappingDetails;
 import com.friendshipApp.model.PersonProfile;
 import com.friendshipApp.service.PersonProfileServices;
@@ -20,6 +21,7 @@ public class PersonProfileServiceImpl implements PersonProfileServices
 	
 	public PersonProfile createPerson(PersonProfile personProfile) 
 	{
+		
 		personProfile  = personProfileDAO.save(personProfile);
 		
 		return personProfile;

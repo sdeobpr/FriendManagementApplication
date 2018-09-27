@@ -99,4 +99,20 @@ public class FriendGraphMappingDetailsServiceImpl implements
 		friendGraphMappingDetailsDAO.deleteAll();
 	}
 
+	@Override
+	public List<Integer> fetchSubscriberOnEmailId(
+			FriendGraphMappingDetails listOfcurrent, Integer friendId1) {
+		Boolean friendStatus = Boolean.FALSE;
+
+		BreathFirstSearch bfs = new BreathFirstSearch();
+
+		FriendGraph<Integer> graph = new FriendGraph<Integer>(
+				listOfcurrent.getSubscribegraph(), listOfcurrent.getSubscribegraph().length);
+
+		List<Integer> listOfsubscriber = bfs.BFS(friendId1, graph.retriveGraph(),
+				10);		
+
+		return listOfsubscriber;
+	}
+
 }
