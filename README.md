@@ -1,10 +1,21 @@
 # FriendManagementApplication
 This application is used to create friend connection , show all friends , show all common friends , Subscribe to friends update , block friends.
 
+Solution Apporach : We will maintain all person's data in database table. Every person have unique id in database table. 
+					We will create 3 graphs. 
+					1. Graph for maintaining Friends connection - In this undirected graph we will consider every person's id a node in graph. To make friendship connection between 
+						2 person , we will create edge between them. To fetch friend list we will use Breath First Search algorithm.
+					2. Grapg to maintaining Subscription : Same as point no 1 , we will maintain undirected graph to maintain for subscriptions. To fetch list of subscribers 
+						we will use Breath First Search algorithm.
+					3. Blocking updates : Same as point no 1 , we will maintain undirected graph to maintain for blocking. To fetch list of blocking email ids 
+						we will use Breath First Search algorithm.
+
 Technology Used  
 1. Java J2ee  -  Used core java to write business logic. User Graphs to store friends ids and Breath First search to search friend connections , Subscription emails etc
 2. Spring Boot - Spring boot supports micro service architecture for rapid development. Spring boot support easy for JPA integrations.
 3. in memory H2 database.
+
+
 
 ##Database : 
 ###Database consist of 2 tables. 
