@@ -86,7 +86,7 @@ c.	Output : {
                      “Success”:”true”
 }
 7.	All Email ids which can receive updates.
-a.	Path : “/friendshipApp/allsubscruiber”
+a.	Path : “/friendshipApp/updateSubscriber”
 b.	Input : {
                 “sender”:”swapnil_deo@hotmail.com”,	
                 “text”: “Hello ammar.khan@gmail.com” 
