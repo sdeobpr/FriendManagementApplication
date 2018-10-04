@@ -22,6 +22,7 @@ import com.friendshipApp.RequestResponseDO.SuccessResponseDO;
 import com.friendshipApp.dao.FriendGraphMappingDetailsDAO;
 import com.friendshipApp.dao.PersonProfileDAO;
 import com.friendshipApp.model.FriendGraphMappingDetails;
+import com.friendshipApp.model.PersonProfile;
 import com.friendshipApp.service.FriendGraphMappingDetailsService;
 import com.friendshipApp.service.PersonProfileServices;
 import com.friendshipApp.utils.FriendGraph;
@@ -57,9 +58,15 @@ public class SubscribeToFriendControllerTest
 	
 	public static SuccessResponseDO  failCase = new SuccessResponseDO();
 	
+	public static PersonProfile  personProfile = new PersonProfile();
+	
 	@BeforeClass
 	public static void init()
 	{	
+		personProfile.setPersonName("Swapnil");
+		personProfile.setPersonEmailId("swapnil_deo@hotmail.com");
+		personProfile.setContactNo("9975640577");
+		personProfile.setPersonProfileId(1);
 		
 		FriendGraph<Integer> objFriendGraph = new FriendGraph<Integer>(listOfEdges , 10);
 		objFriendGraph.addEdge(1,2);
@@ -159,7 +166,7 @@ public class SubscribeToFriendControllerTest
 		
 		Mockito.when(personProfileService.fetchProfileOnEmaiId(subscriberDO.getSender())).thenReturn(new Long(1));	
 		
-		Mockito.when(personProfileService.fetchProfileOnId(1).getPersonEmailId()).thenReturn("swapnil_deo@hotmail.com");
+		Mockito.when(personProfileService.fetchProfileOnId(1)).thenReturn(personProfile);
 		
 		Mockito.when(friendGraphMappingDetailsService.getGraphs()).thenReturn(friendGraphMappingDetails);
 		
@@ -167,7 +174,7 @@ public class SubscribeToFriendControllerTest
 		
 		Mockito.when(friendGraphMappingDetailsService.fetchSubscriberOnEmailId(friendGraphMappingDetails, 1)).thenReturn(listOffriends);
 				
-		Assert.assertEquals(suscessCase.getSuccess(), controller.subscriberforUpdated(subscriberDO).getBody().getSuccess());
+		Assert.assertEquals(failCase.getSuccess(), controller.subscriberforUpdated(subscriberDO).getBody().getSuccess());
 			
 		
 		
