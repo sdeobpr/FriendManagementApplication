@@ -1,5 +1,7 @@
 package com.friendshipApp.RequestResponseDO;
-
+/*
+ * This is output data object class which store friend list ,friend count and status of operation.
+*/
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;

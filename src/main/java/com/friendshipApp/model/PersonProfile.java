@@ -1,5 +1,7 @@
 package com.friendshipApp.model;
-
+/*
+ * This table is used store all person data.
+*/
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

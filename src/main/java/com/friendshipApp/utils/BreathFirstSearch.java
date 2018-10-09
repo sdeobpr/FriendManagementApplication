@@ -1,5 +1,7 @@
 package com.friendshipApp.utils;
-
+/*
+ * This class is using breath first search algorithm to find nodes on graph. We are considering each friend as Node in graph.
+*/
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -54,18 +56,5 @@ public class BreathFirstSearch
         return localList;
  
     }
-	
-public static void main(String[] args) {
-	LinkedList<Integer>[] listOfEdges =  new LinkedList[10];
-	FriendGraph<Integer> objFriendGraph = new FriendGraph<Integer>(listOfEdges , 10);
-	objFriendGraph.addEdge(1,2);
-	objFriendGraph.addEdge(1,3);
-	objFriendGraph.addEdge(2,3);
-	objFriendGraph.addEdge(3,4);
-	
-	listOfEdges = objFriendGraph.retriveGraph();
-	BreathFirstSearch search = new BreathFirstSearch();
-	
-	System.out.println( search.BFS(7, listOfEdges, 10));
-}
+
 }

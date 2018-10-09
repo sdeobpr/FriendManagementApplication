@@ -1,5 +1,10 @@
 package com.friendshipApp.controller;
 
+
+/*
+ * This class is used as Controller for retrieve friends, retrieve common friends.
+*/
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,6 +40,10 @@ public class RetriveFriendController
 			
 	@Autowired
 	FriendGraphMappingDetails newConnection;
+	
+	/*
+	 * This method is used to retrieve friends. It accepts RetriveFriendDO's JSON as input and provide FriendsListDO's JSON  as output.
+	*/
 	
 	@RequestMapping(value = "/retriveFriend" , method = RequestMethod.POST)
 	public ResponseEntity<FriendsListDO> retriveFrineds(@RequestBody RetriveFriendDO retriveFriendDO)
@@ -76,6 +85,10 @@ public class RetriveFriendController
 		
 		return new ResponseEntity<FriendsListDO>( friendsListDO ,HttpStatus.OK);
 	}
+	/*
+	 * This method is used to retrieve common friends between 2 person. It accepts MakeFriendsDO's JSON as input and provide SuccessResoseDO as output.
+	*/
+	
 	@RequestMapping(value = "/retriveCommonFriends" , method = RequestMethod.POST)
 	public ResponseEntity<FriendsListDO>  retriveCommonFrineds(@RequestBody MakeFriendsDO makeFriendsDO)
 	{

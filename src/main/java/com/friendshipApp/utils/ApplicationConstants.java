@@ -1,5 +1,7 @@
 package com.friendshipApp.utils;
-
+/*
+ * This interface is used to defined all constants values in application.
+*/
 public interface ApplicationConstants 
 {
 	String FRIEND_CONNECITION_SUCCESS = "FriendShip Connection Successfully connected.";

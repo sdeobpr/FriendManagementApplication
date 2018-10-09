@@ -1,5 +1,10 @@
 package com.friendshipApp.RequestResponseDO;
 
+
+/*
+ * This is output data object class which give list of subscriber of input friend email id.
+*/
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;

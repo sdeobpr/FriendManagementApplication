@@ -1,5 +1,9 @@
 package com.friendshipApp.controller;
 
+/*
+ * This class is used as Controller for create person(i.e Friend) , make friend ship connection between 2 persons , check friend connection between 2 person.
+*/
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,10 +45,12 @@ public class CreateFriendConnectionController
 	@Autowired
 	FriendGraphMappingDetails newConnection;
 	
+	/*
+	 * This method is used to create person in database. It accepts Person's JSON as input and provide SuccessResoseDO as output.
+	*/
+	
 	@RequestMapping(path = "/createPerson", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	
-	
+	@ResponseBody	
 	public ResponseEntity<SuccessResponseDO> createPerson(
 			@RequestBody PersonProfile personProfile) {
 		
@@ -73,7 +79,9 @@ public class CreateFriendConnectionController
 	}
 
 	
-
+	/*
+	 * This method is used to create friendship connection between 2 person. It accepts Friend list JSON as input and provide SuccessResoseDO as output.
+	*/
 	@RequestMapping(path = "/createConnection",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -141,7 +149,10 @@ public class CreateFriendConnectionController
 		}
 		return new ResponseEntity<SuccessResponseDO>( successResponseDO ,HttpStatus.OK);
     }
-
+	/*
+	 * This method is used to check friendship connection between 2 person. It accepts Friend list JSON as input and provide SuccessResoseDO as output.
+	*/
+	
 	@RequestMapping(path = "/checkConnection", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<SuccessResponseDO> checkFriendshipConnection(

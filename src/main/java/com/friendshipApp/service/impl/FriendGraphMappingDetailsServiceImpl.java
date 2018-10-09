@@ -75,8 +75,8 @@ public class FriendGraphMappingDetailsServiceImpl implements
 
 		List<Integer> listOfFriends = bfs.BFS(friendId1, graph.retriveGraph(),
 				10);
-
-		friendStatus = listOfFriends.contains(friendId2);
+		
+		friendStatus =  listOfFriends.stream().anyMatch(s -> s.equals(friendId2));
 
 		return friendStatus;
 	}

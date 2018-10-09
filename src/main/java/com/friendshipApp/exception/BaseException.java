@@ -1,5 +1,8 @@
 package com.friendshipApp.exception;
 
+/*
+ * This class is base exception class
+*/
 import org.springframework.http.HttpStatus;
 
 /**

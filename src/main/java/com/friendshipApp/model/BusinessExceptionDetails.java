@@ -1,5 +1,8 @@
 package com.friendshipApp.model;
 
+/*
+ * This table is used to store the all business exception message.
+*/
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

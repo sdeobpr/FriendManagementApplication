@@ -1,5 +1,8 @@
 package com.friendshipApp.controller;
 
+/*
+ * This class is used as Controller for Blocking request between friends updates email.
+*/
 import java.util.LinkedList;
 
 import org.apache.logging.log4j.LogManager;
@@ -36,7 +39,9 @@ public class BlockFriendController {
 
 	@Autowired
 	FriendGraphMappingDetails newConnection;
-
+	/*
+	 * 	This method is used to block friends Emails.
+	*/
 	@RequestMapping(value = "/blockfriend", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SuccessResponseDO> blockfriend(
 			@RequestBody SubscribeRequestDO subscribeRequestDO) {

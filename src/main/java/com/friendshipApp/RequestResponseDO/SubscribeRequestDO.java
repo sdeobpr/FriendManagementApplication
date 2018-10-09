@@ -1,5 +1,9 @@
 package com.friendshipApp.RequestResponseDO;
 
+/*
+ * This is input data object class which take friend email id as requestor and target who want to subscribe to requestor..
+*/
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 

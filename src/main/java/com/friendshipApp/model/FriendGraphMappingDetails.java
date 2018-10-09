@@ -1,5 +1,7 @@
 package com.friendshipApp.model;
-
+/*
+ * This table is used to store the all person related mapping such as friendship mapping , subscribe friend mapping , block friend mapping.
+*/
 import java.util.LinkedList;
 
 import javax.persistence.Column;

@@ -1,5 +1,9 @@
 package com.friendshipApp.model;
 
+/*
+ * This table is used store standard constant message of application.
+*/
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

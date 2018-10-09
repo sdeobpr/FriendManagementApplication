@@ -1,5 +1,8 @@
 package com.friendshipApp.controller;
 
+/*
+ * This utility controller for house keeping of database person and friend connection table. 
+*/
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +25,32 @@ public class UtilsController
 	@Autowired 
 	PersonProfileServices personProfileService;
 	
+	/*
+	 * This method is used to delete all data of FS_PROFILE_MAPPING_DTL table.
+	*/
 	@RequestMapping(value = "/resetMapping", method = RequestMethod.GET)
 	public void resetMappingTable()
 	{
 		friendGraphMappingDetailsService.resetTable();
 	}
-	
+	/*
+	 * This method is used to delete all data of FS_PERSON_PROFILE table.
+	*/
 	@RequestMapping(value = "/resetPerson", method = RequestMethod.GET)
 	public void resetPersonTable()
 	{
 		personProfileService.resetTable();
 	}
+	/* 
+	 * This method is used to display all person records.
+	*/
 	@RequestMapping(value = "/dispalyAllPerson", method = RequestMethod.GET)
 	public List<PersonProfile> displayAllPerson() {
 		return personProfileService.displayAllPerson();
 	}
+	/* 
+	 * This method is used to display all friendship details records.
+	*/
 	@RequestMapping(value = "/dispalyAllConnection", method = RequestMethod.GET)
 	public List<FriendGraphMappingDetails> displayAllConnection() {
 		return friendGraphMappingDetailsService.getfullGraphs();

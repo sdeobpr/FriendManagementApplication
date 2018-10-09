@@ -1,5 +1,9 @@
 package com.friendshipApp.controller;
 
+
+/*
+ * This class is used as Controller for subscribe friends.
+*/
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,6 +43,10 @@ public class SubscribeToFriendController
 	
 	@Autowired
 	FriendGraphMappingDetails newConnection;
+	
+	/*
+	 * 	This method is used to subscribe friends updates.
+	*/
 	
 	@RequestMapping(value = "subscribeToFriendUpdates" ,method = RequestMethod.POST )
 	public ResponseEntity<SuccessResponseDO> subscribeToFriendupdates(@RequestBody SubscribeRequestDO subscribeRequestDO)
@@ -110,8 +118,11 @@ public class SubscribeToFriendController
 		return new ResponseEntity<SuccessResponseDO>( successResponseDO ,HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/updateSubscriber" ,method = RequestMethod.POST )
+	/*
+	 * 	This method is used to find friends who are subscribed for friends updates.
+	*/
 	
+	@RequestMapping(value = "/updateSubscriber" ,method = RequestMethod.POST )	
 	public ResponseEntity<SubscriptionListDO> subscriberforUpdated(@RequestBody SubscriberDO subscriberDO)
 	{
 		List<String> listOfSubscriberEmails = new ArrayList<String>();

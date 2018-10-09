@@ -1,5 +1,8 @@
 package com.friendshipApp.RequestResponseDO;
 
+/*
+ * This is input data object class which store friend list.*/
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;

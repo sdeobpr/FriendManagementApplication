@@ -1,5 +1,9 @@
 package com.friendshipApp.RequestResponseDO;
 
+/*
+ * This is output data object class.
+*/
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 

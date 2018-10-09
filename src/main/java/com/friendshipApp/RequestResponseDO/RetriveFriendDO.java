@@ -1,5 +1,8 @@
 package com.friendshipApp.RequestResponseDO;
 
+/*
+ * This is input data object class which take friend email id whose data user wants to retrieve.
+*/
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 
